@@ -38,6 +38,7 @@ export class MaskedTextField extends MaskedTextFieldBase {
         const nativeView = this.nativeView as any;
         nativeView.textWatcher.owner = new WeakRef(this);
     }
+    
     public disposeNativeView() {
         const nativeView = this.nativeView as any;
         nativeView.textWatcher.owner = null;
