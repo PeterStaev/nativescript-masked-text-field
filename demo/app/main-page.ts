@@ -7,7 +7,6 @@ export function navigatingTo(args: EventData) {
     const page = args.object as Page;
     
     viewModel = new Observable();
-    setTimeout(() => { viewModel.set("value", "(234)x5690"); }, 3000);
-    // setTimeout(() => { viewModel.set("value", "(234)x56901"); }, 5000);
+    viewModel.set("value", "");
     page.bindingContext = viewModel;
 }

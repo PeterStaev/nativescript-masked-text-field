@@ -1,9 +1,12 @@
 /*! *****************************************************************************
 Copyright (c) 2017 Tangra Inc.
+
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
+
 http://www.apache.org/licenses/LICENSE-2.0
+
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -65,27 +68,36 @@ class MaskedTextFieldTextWatcher extends java.lang.Object implements android.tex
     }
     
     public beforeTextChanged(s: string /* java.lang.CharSequence */, start: number, count: number, after: number) {
-        const owner = this.owner.get();
-        if (!owner._isChangingNativeTextIn) {
-            console.log("beforeTextChanged", s, start, count, after);
-        }
+        // NOT NEEDED
     }
 
     public onTextChanged(s: string /* java.lang.CharSequence */, start: number, before: number, count: number) {
         const owner = this.owner.get();
         if (!owner._isChangingNativeTextIn) {
             const changedText = s.toString().substr(start, count);
-            const newMaskedValue = owner._getNewMaskedValue(start, start + before - 1, changedText, false);
-            const nextRegExToken = owner._getFirstRegExpToken(start + count, false);
+            const isBackwardsIn: boolean = (count === 0);
+            const unmaskedChangedValue = owner._getUnmaskedValue(changedText);
+            const newMaskedValue = owner._getNewMaskedValue(start, start + before, unmaskedChangedValue, isBackwardsIn);
             const editText: android.widget.EditText = owner.nativeView as android.widget.EditText;
 
+            // NOTE: Do not set directly the owner.text property as this will trigger an unnecessary coerce value and masking/unmasking!            
             owner._setNativeText(newMaskedValue);
             textProperty.nativeValueChange(owner, newMaskedValue);
-            editText.setSelection(nextRegExToken);
-            // textProperty.coerce(owner);
-            // textProperty.s
-            // const newMaskedValue = owner._getNewMaskedValue(start, )
-            // console.log("onTextChanged", changedText, newMaskedValue);
+
+            let newCaretPosition = owner._getNextRegExpToken(start, isBackwardsIn);
+            if (newCaretPosition === -1) {
+                // Current caret is outside RegExp token, so leave where it is currently
+                newCaretPosition = start + (isBackwardsIn ? 1 : 0);
+            }
+            else {
+                newCaretPosition = owner._getNextRegExpToken(newCaretPosition + unmaskedChangedValue.length, isBackwardsIn);
+                if (newCaretPosition === -1) {
+                    // There are no next RegExp tokens, go to end/start
+                    newCaretPosition = owner._getNextRegExpToken((isBackwardsIn ? 0 : newMaskedValue.length - 1), !isBackwardsIn)
+                        + (!isBackwardsIn ? 1 : 0);
+                }
+            }
+            editText.setSelection(newCaretPosition);
         }    
     }
 

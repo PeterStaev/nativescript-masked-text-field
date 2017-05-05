@@ -1,3 +1,6 @@
 export default [
-    "MaskedTextField"
+    "MaskedTextField",
+
+    // Android
+    "MaskedTextFieldTextWatcher"
 ];

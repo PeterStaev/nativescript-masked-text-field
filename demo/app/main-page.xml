@@ -5,9 +5,6 @@
     </Page.actionBar>
 
     <StackLayout class="p-20">
-        <mtf:MaskedTextField class="input input-border" text="{{ value }}" mask="(999) 999-9999 x99999 \9" />
-        <!--<Label text="Tap the button" class="h1 text-center"/>
-        <Button text="TAP" tap="{{ onTap }}" class="btn btn-primary btn-active"/>
-        <Label text="{{ message }}" class="h2 text-center" textWrap="true"/>-->
+        <mtf:MaskedTextField class="input input-border" text="{{ value }}" mask="(999) 999-9999" keyboardType="phone" />
     </StackLayout>
 </Page>

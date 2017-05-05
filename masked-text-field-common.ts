@@ -1,9 +1,12 @@
 /*! *****************************************************************************
 Copyright (c) 2017 Tangra Inc.
+
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
+
 http://www.apache.org/licenses/LICENSE-2.0
+
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -101,27 +104,26 @@ export class MaskedTextFieldBase extends TextField implements MaskedTextFieldDef
         return resultBuilder.join("");
     }
 
-    public _getNewMaskedValue(replaceStart: number, replaceEnd: number, replaceValue: string, isBackwardsIn?: boolean) {
-        replaceStart = this._getFirstRegExpToken(replaceStart, isBackwardsIn);
+    public _getNewMaskedValue(replaceStart: number, replaceEnd: number, unmaskedReplaceValue: string, isBackwardsIn?: boolean) {
+        replaceStart = this._getNextRegExpToken(replaceStart, isBackwardsIn);
         if (replaceStart > replaceEnd) {
             replaceEnd = replaceStart;
         }
 
         const currentValue = this.text || this._emptyMaskedValue;
         const unmaskedValueAndSuffix =
-            this._getUnmaskedValue(replaceValue, replaceStart)
-            + this._getUnmaskedValue(currentValue.substring(replaceEnd + 1), replaceEnd + 1);
+            unmaskedReplaceValue + this._getUnmaskedValue(currentValue.substring(replaceEnd), replaceEnd);
         const unmaskedValueAndSuffixSplit = unmaskedValueAndSuffix.split("");
         const currentValueSplit = currentValue.split("");
 
-        for (let loop = replaceStart, charLoop = 0; loop > -1 && loop < this._emptyMaskedValue.length; loop = this._getFirstRegExpToken(loop + 1), charLoop++) {
+        for (let loop = replaceStart, charLoop = 0; loop > -1 && loop < this._emptyMaskedValue.length; loop = this._getNextRegExpToken(loop + 1), charLoop++) {
             currentValueSplit[loop] = unmaskedValueAndSuffixSplit[charLoop] || this._placeholder;
         }
 
         return currentValueSplit.join("");        
     }
 
-    public _getFirstRegExpToken(start: number, isBackwardsIn?: boolean) {
+    public _getNextRegExpToken(start: number, isBackwardsIn?: boolean) {
         const step = (isBackwardsIn ? -1 : 1);
 
         for (let loop = start; loop > -1 && loop < this._maskTokens.length; loop += step) {
@@ -147,13 +149,12 @@ export const textProperty = new CoercibleProperty<MaskedTextFieldBase, string>({
     name: "text",
     defaultValue: null,
     coerceValue: (target, value) => {
-        console.log("coerce");
         if (!target._emptyMaskedValue) {
             return value;
         }
 
         const unmaskedValue = target._getUnmaskedValue(value);
-        return target._getNewMaskedValue(0, target._emptyMaskedValue.length - 1, unmaskedValue);
+        return target._getNewMaskedValue(0, target._emptyMaskedValue.length, unmaskedValue);
     }
 });
 textProperty.register(MaskedTextFieldBase);
