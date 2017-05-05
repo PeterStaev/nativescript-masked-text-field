@@ -2,8 +2,7 @@ language: node_js
 node_js:
     6.10.3
 before_script:
-    - npm install -g grunt-cli
     - npm install
 script:
-    grunt build
+    ./node_modules/.bin/grunt build
 

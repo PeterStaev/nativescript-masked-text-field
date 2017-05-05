@@ -17,7 +17,4 @@ import { TextField } from "ui/text-field";
 
 export class MaskedTextField extends TextField {
     mask: string;
-
-    ios: any; /* UITextField */
-    android: any; /* android.widget.EditText */
 }
