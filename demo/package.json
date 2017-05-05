@@ -1,0 +1,30 @@
+{
+  "description": "NativeScript Application",
+  "license": "SEE LICENSE IN <your-license-filename>",
+  "readme": "NativeScript Application",
+  "repository": "<fill-your-repository-here>",
+  "nativescript": {
+    "id": "com.tangrainc.maskedtextfielddemo",
+    "tns-android": {
+      "version": "3.0.0"
+    }
+  },
+  "scripts": {
+    "android": "npm uninstall nativescript-masked-text-field && tns platform clean android && tns run android",
+    "ios": "npm uninstall nativescript-drop-down && tns run ios --emulator"
+  },
+  "dependencies": {
+    "nativescript-masked-text-field": "file:../bin/dist",
+    "nativescript-theme-core": "~1.0.2",
+    "tns-core-modules": "3.0.0"
+  },
+  "devDependencies": {
+    "babel-traverse": "6.24.1",
+    "babel-types": "6.24.1",
+    "babylon": "6.17.0",
+    "lazy": "1.0.11",
+    "nativescript-dev-android-snapshot": "^0.*.*",
+    "nativescript-dev-typescript": "~0.4.0",
+    "typescript": "~2.2.1"
+  }
+}
