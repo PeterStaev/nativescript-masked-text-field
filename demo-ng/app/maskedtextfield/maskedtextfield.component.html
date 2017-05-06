@@ -1,0 +1,6 @@
+<ActionBar title="Demo" class="action-bar">
+</ActionBar>
+<StackLayout class="page">
+    <MaskedTextField class="input input-border" mask="(999) 999-9999" [(ngModel)]="value" keyboardType="phone"></MaskedTextField>
+    <Label class="label h2" [text]="value"></Label>
+</StackLayout>

@@ -54,4 +54,6 @@ node_modules
 *.tmp.*
 demo/platforms
 demo/lib
+demo-ng/platforms
+demo-ng/lib
 !webpack.*.js

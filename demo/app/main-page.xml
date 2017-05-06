@@ -6,5 +6,6 @@
 
     <StackLayout class="p-20">
         <mtf:MaskedTextField class="input input-border" text="{{ value }}" mask="(999) 999-9999" keyboardType="phone" />
+        <Label class="h2" text="{{ value }}" />
     </StackLayout>
 </Page>

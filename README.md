@@ -50,7 +50,63 @@ Gets or sets the mask for the text field. Possible tokens in the mask:
 ```
 
 ## Angular
-TBD
+In order to be able to use the widget you just need to import `MaskedTextFieldModule` in `NgModule`:
+```typescript
+import { MaskedTextFieldModule } from "nativescript-masked-text-field/angular";
+// ......
+@NgModule({
+    // ......
+    imports: [
+        // ......
+        MaskedTextFieldModule,
+        // ......
+    ],
+    // ......
+})
+```
+
+##### Example Usage
+```TypeScript
+// main.ts
+import { NgModule } from "@angular/core";
+import { NativeScriptModule } from "nativescript-angular/nativescript.module";
+import { platformNativeScriptDynamic } from "nativescript-angular/platform";
+import { MaskedTextFieldModule } from "nativescript-masked-text-field/angular";
+import { AppComponent } from "./app.component";
+
+@NgModule({
+    declarations: [ AppComponent ],
+    bootstrap:    [ AppComponent ],
+    imports:      [
+        NativeScriptModule,
+        MaskedTextFieldModule,
+    ],
+})
+class AppComponentModule {
+}
+
+platformNativeScriptDynamic().bootstrapModule(AppComponentModule);
+```
+
+```HTML
+<!-- app.component.html -->
+<StackLayout>
+    <MaskedTextField class="input input-border" mask="(999) 999-9999" [(ngModel)]="value" keyboardType="phone"></MaskedTextField>
+</StackLayout>
+```
+
+```TypeScript
+// app.component.ts
+import { Component } from "@angular/core";
+
+@Component({
+    selector: "my-app",
+    templateUrl:"app.component.html",
+})
+export class AppComponent {
+    public value = "";
+}
+```
 
 ## Working with Webpack+Uglify
 In case you are uing webpack and also are minifying/uglifying your code, there are some specific names that should be excluded from the uglification for the widget to work properly. The MaskedTextField widget exports those and you need to add them to the mangle exclude option of the uglifyjs plugin in the `webpack.common.js` file:
