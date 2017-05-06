@@ -7,6 +7,9 @@
 A NativeScript Masked Text Field widget. The widget extends the default NativeScript TextField widget
 and adds ability to define masks for the input. 
 
+## Screenshot
+![Screenshot of iOS and Android](https://raw.githubusercontent.com/PeterStaev/nativescript-masked-text-field/master/docs/screenshot.jpg)
+
 ## Installation
 Run the following command from the root of your project:
 

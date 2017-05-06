@@ -20,7 +20,7 @@ import { MaskedTextField as MaskedTextFieldDefinition } from ".";
 
 export * from "ui/text-field";
 
-export class MaskedTextFieldBase extends TextField implements MaskedTextFieldDefinition {
+export abstract class MaskedTextFieldBase extends TextField implements MaskedTextFieldDefinition {
     public mask: string;
     public text: string;
 
@@ -38,6 +38,31 @@ export class MaskedTextFieldBase extends TextField implements MaskedTextFieldDef
         "a": /[a-zA-Z0-9]|\s/
     };
     private _maskTokens: Array<string | RegExp> = [];
+
+    public _updateMaskedText(start: number, previousCharactersCount: number, newText: string, isBackwardsIn: boolean): number {
+        const unmaskedChangedValue = this._getUnmaskedValue(newText);
+        const newMaskedValue = this._getNewMaskedValue(start, start + previousCharactersCount, unmaskedChangedValue, isBackwardsIn);
+
+        // NOTE: Do not set directly the owner.text property as this will trigger an unnecessary coerce value and masking/unmasking!            
+        this._setNativeText(newMaskedValue);
+        textProperty.nativeValueChange(this, newMaskedValue);
+
+        let newCaretPosition = this._getNextRegExpToken(start, isBackwardsIn);
+        if (newCaretPosition === -1) {
+            // Current caret is outside RegExp token, so leave where it is currently
+            newCaretPosition = start + (isBackwardsIn ? 1 : 0);
+        }
+        else {
+            newCaretPosition = this._getNextRegExpToken(newCaretPosition + unmaskedChangedValue.length, isBackwardsIn);
+            if (newCaretPosition === -1) {
+                // There are no next RegExp tokens, go to end/start
+                newCaretPosition = this._getNextRegExpToken((isBackwardsIn ? 0 : newMaskedValue.length - 1), !isBackwardsIn)
+                    + (!isBackwardsIn ? 1 : 0);
+            }
+        }
+
+        return newCaretPosition;
+    }
 
     public _generateMaskTokens() {
         const maskChars = this.mask.split("");
@@ -123,7 +148,9 @@ export class MaskedTextFieldBase extends TextField implements MaskedTextFieldDef
         return currentValueSplit.join("");        
     }
 
-    public _getNextRegExpToken(start: number, isBackwardsIn?: boolean) {
+    protected abstract _setNativeText(value: string);
+
+    private _getNextRegExpToken(start: number, isBackwardsIn?: boolean) {
         const step = (isBackwardsIn ? -1 : 1);
 
         for (let loop = start; loop > -1 && loop < this._maskTokens.length; loop += step) {

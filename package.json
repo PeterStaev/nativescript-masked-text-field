@@ -6,7 +6,8 @@
   "typings": "masked-text-field.d.ts",
   "nativescript": {
     "platforms": {
-      "android": "3.0.0"
+      "android": "3.0.0",
+      "ios": "3.0.0"
     },
     "plugin": {
       "nan": "true",

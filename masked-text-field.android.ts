@@ -38,12 +38,16 @@ export class MaskedTextField extends MaskedTextFieldBase {
         const nativeView = this.nativeView as any;
         nativeView.textWatcher.owner = new WeakRef(this);
     }
-    
+
     public disposeNativeView() {
         const nativeView = this.nativeView as any;
         nativeView.textWatcher.owner = null;
 
         super.disposeNativeView();
+    }
+    
+    public [textProperty.getDefault]() {
+        this.nativeView.getText();
     }
 
     public [textProperty.setNative](value: string) {
@@ -77,27 +81,8 @@ class MaskedTextFieldTextWatcher extends java.lang.Object implements android.tex
         if (!owner._isChangingNativeTextIn) {
             const changedText = s.toString().substr(start, count);
             const isBackwardsIn: boolean = (count === 0);
-            const unmaskedChangedValue = owner._getUnmaskedValue(changedText);
-            const newMaskedValue = owner._getNewMaskedValue(start, start + before, unmaskedChangedValue, isBackwardsIn);
+            const newCaretPosition = owner._updateMaskedText(start, before, changedText, isBackwardsIn);
             const editText: android.widget.EditText = owner.nativeView as android.widget.EditText;
-
-            // NOTE: Do not set directly the owner.text property as this will trigger an unnecessary coerce value and masking/unmasking!            
-            owner._setNativeText(newMaskedValue);
-            textProperty.nativeValueChange(owner, newMaskedValue);
-
-            let newCaretPosition = owner._getNextRegExpToken(start, isBackwardsIn);
-            if (newCaretPosition === -1) {
-                // Current caret is outside RegExp token, so leave where it is currently
-                newCaretPosition = start + (isBackwardsIn ? 1 : 0);
-            }
-            else {
-                newCaretPosition = owner._getNextRegExpToken(newCaretPosition + unmaskedChangedValue.length, isBackwardsIn);
-                if (newCaretPosition === -1) {
-                    // There are no next RegExp tokens, go to end/start
-                    newCaretPosition = owner._getNextRegExpToken((isBackwardsIn ? 0 : newMaskedValue.length - 1), !isBackwardsIn)
-                        + (!isBackwardsIn ? 1 : 0);
-                }
-            }
             editText.setSelection(newCaretPosition);
         }    
     }
