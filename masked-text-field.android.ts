@@ -29,6 +29,10 @@ export class MaskedTextField extends MaskedTextFieldBase {
         textEdit.addTextChangedListener(textWatcher);
         (textEdit as any).textWatcher = textWatcher;
         
+        // Remote the default text watcher that comes from the core modules
+        //  as it update the value in the wrong place with the wrong one
+        textEdit.removeTextChangedListener((textEdit as any).listener);
+        
         return textEdit;
     }
 

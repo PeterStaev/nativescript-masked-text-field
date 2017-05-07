@@ -1,6 +1,6 @@
 {
   "name": "nativescript-masked-text-field",
-  "version": "0.5.0",
+  "version": "1.0.0",
   "description": "A NativeScript masked text field widget.",
   "main": "masked-text-field",
   "typings": "masked-text-field.d.ts",

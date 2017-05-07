@@ -110,8 +110,6 @@ class MaskedTextFieldDelegate extends NSObject implements UITextFieldDelegate {
     }
 
     public textFieldShouldChangeCharactersInRangeReplacementString(textField: UITextField, range: NSRange, replacementString: string): boolean {
-        this._defaultImplementation.textFieldShouldChangeCharactersInRangeReplacementString(textField, range, replacementString);
-
         const owner = this._owner.get();
         const isBackwardsIn: boolean = (replacementString === "");
         const newCaretPositionNumber = owner._updateMaskedText(range.location, range.length, replacementString, isBackwardsIn);
