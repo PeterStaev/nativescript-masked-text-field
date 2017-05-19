@@ -8,8 +8,4 @@ import * as dialogs from "ui/dialogs";
 })
 export class MaskedTextFieldComponent {
     public value: string = "";
-
-    public getModelValue() {
-        dialogs.alert(this.value);
-    }
 }
