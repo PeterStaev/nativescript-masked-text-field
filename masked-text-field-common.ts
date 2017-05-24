@@ -40,7 +40,7 @@ export abstract class MaskedTextFieldBase extends TextField implements MaskedTex
     private _maskTokens: Array<string | RegExp> = [];
 
     public _updateMaskedText(start: number, previousCharactersCount: number, newText: string, isBackwardsIn: boolean): number {
-        const unmaskedChangedValue = this._getUnmaskedValue(newText);
+        const unmaskedChangedValue = this._getUnmaskedValue(newText, start);
         const newMaskedValue = this._getNewMaskedValue(start, start + previousCharactersCount, unmaskedChangedValue, isBackwardsIn);
 
         // NOTE: Do not set directly the owner.text property as this will trigger an unnecessary coerce value and masking/unmasking!            
