@@ -1,6 +1,6 @@
 {
   "name": "nativescript-masked-text-field",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A NativeScript masked text field widget.",
   "main": "masked-text-field",
   "typings": "masked-text-field.d.ts",
@@ -32,6 +32,9 @@
     "tangra"
   ],
   "author": "Peter Staev <peter@tangrasoft.com>",
+  "contributors": [
+    "newapx (https://github.com/newapx)"
+  ],
   "license": "Apache-2.0",
   
   "peerDependencies": {
