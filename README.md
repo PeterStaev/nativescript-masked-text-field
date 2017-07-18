@@ -111,7 +111,7 @@ export class AppComponent {
 ## Working with Webpack+Uglify
 In case you are uing webpack and also are minifying/uglifying your code, there are some specific names that should be excluded from the uglification for the widget to work properly. The MaskedTextField widget exports those and you need to add them to the mangle exclude option of the uglifyjs plugin in the `webpack.common.js` file:
 ```js
-var maskedTextFieldMangleExcludes = require("nativescript-maskedTextField/uglify-mangle-excludes").default;
+var maskedTextFieldMangleExcludes = require("nativescript-masked-text-field/uglify-mangle-excludes").default;
 //......
 module.exports = function (platform, destinationApp) {
     //......
