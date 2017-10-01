@@ -136,8 +136,8 @@ module.exports = function (platform, destinationApp) {
 ## Demos
 This repository includes both Angular and plain NativeScript demos. In order to run those execute the following in your shell:
 ```shell
-$ git clone https://github.com/peterstaev/nativescript-grid-view
-$ cd nativescript-grid-view
+$ git clone https://github.com/peterstaev/nativescript-masked-text-field
+$ cd nativescript-masked-text-field
 $ npm install
 $ npm run demo-ios
 ```
