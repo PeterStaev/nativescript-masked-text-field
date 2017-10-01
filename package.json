@@ -1,6 +1,6 @@
 {
   "name": "nativescript-masked-text-field",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A NativeScript masked text field widget.",
   "main": "masked-text-field",
   "typings": "masked-text-field.d.ts",
@@ -21,7 +21,12 @@
     "type": "git",
     "url": "https://github.com/PeterStaev/nativescript-masked-text-field"
   },
-
+  "scripts": {
+    "demo-ios": "grunt build && cd demo && tns run ios",
+    "demo-android": "grunt build && cd demo && tns run android",
+    "demo-ng-ios": "grunt build && cd demo-ng && tns run ios",
+    "demo-ng-android": "grunt build && cd demo-ng && tns run android"
+  },
   "keywords": [
     "NativeScript",
     "masked input",

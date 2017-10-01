@@ -17,8 +17,8 @@ Run the following command from the root of your project:
 
 This command automatically installs the necessary files, as well as stores nativescript-masked-text-field as a dependency in your project's `package.json` file.
 
-## Usage
-You need to add `xmlns:mtf="nativescript-masked-text-field"` to your page tag, and then simply use `<mtf:MaskedTextField/>` in order to add the widget to your page.
+## Configuration
+There is no additional configuration needed!
 
 ## API
 NOTE: Since the widget extends the default TextFeild NatvieScript widget it has all the properties/events/methods of the TextField widget. The below-mentioned properties are in addition to the TextField ones
@@ -38,8 +38,8 @@ Gets or sets the mask for the text field. Possible tokens in the mask:
   
   If you want to escape any token character you can use `\` (for example `\9`)
 
-
-## Example
+## Usage
+You need to add `xmlns:mtf="nativescript-masked-text-field"` to your page tag, and then simply use `<mtf:MaskedTextField/>` in order to add the widget to your page.
 ```XML
 <!-- test-page.xml -->
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:mtf="nativescript-masked-text-field">
@@ -49,7 +49,7 @@ Gets or sets the mask for the text field. Possible tokens in the mask:
 </Page>
 ```
 
-## Angular
+## Usage in Angular
 In order to be able to use the widget you just need to import `MaskedTextFieldModule` in `NgModule`:
 ```typescript
 import { MaskedTextFieldModule } from "nativescript-masked-text-field/angular";
@@ -132,3 +132,20 @@ module.exports = function (platform, destinationApp) {
    //......
 }
 ```
+
+## Demos
+This repository includes both Angular and plain NativeScript demos. In order to run those execute the following in your shell:
+```shell
+$ git clone https://github.com/peterstaev/nativescript-grid-view
+$ cd nativescript-grid-view
+$ npm install
+$ npm run demo-ios
+```
+This will run the plain NativeScript demo project on iOS. If you want to run it on Android simply use the `-android` instead of the `-ios` sufix. 
+
+If you want to run the Angular demo simply use the `demo-ng-` prefix instead of `demo-`. 
+
+## Donate
+`bitcoin:14fjysmpwLvSsAskvLASw6ek5XfhTzskHC`
+
+![Donate](https://www.tangrainc.com/qr.png)
