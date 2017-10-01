@@ -22,7 +22,7 @@ const MASKED_TEXT_VALUE_ACCESSOR = {
     selector: "MaskedTextField[ngModel], MaskedTextField[formControlName], maskedTextField[ngModel], maskedTextField[formControlName], masked-text-field[ngModel], masked-text-field[formControlName]",
     providers: [MASKED_TEXT_VALUE_ACCESSOR]
 })
-class MaskedTextValueAccessor extends TextValueAccessor {
+export class MaskedTextValueAccessor extends TextValueAccessor {
     // Empty as we will use the same logic as the TextValueAccessor 
 }
 
