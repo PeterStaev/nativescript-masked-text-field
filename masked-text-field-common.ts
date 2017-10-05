@@ -65,7 +65,7 @@ export abstract class MaskedTextFieldBase extends TextField implements MaskedTex
     }
 
     public _generateMaskTokens() {
-        const maskChars = this.mask.split("");
+        const maskChars = this.mask.toString().split("");
         const emptyMaskedValueBuider: string[] = [];
         let isEscapeCharIn = false;
 
