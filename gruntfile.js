@@ -24,7 +24,7 @@
             },
             platforms: {
                 files: [{ expand: true, src: ["platforms/**"], dest: localConfig.outDir }]
-            },            
+            },
             packageConfig: {
                 src: "package.json",
                 dest: localConfig.outDir,
@@ -96,7 +96,7 @@
         "exec:ngCompile",
         "copy"
     ]);
-    
+
     grunt.registerTask("build", [
         "exec:tslint",
         "compile",
