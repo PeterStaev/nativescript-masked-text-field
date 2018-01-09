@@ -1,7 +1,7 @@
 import { Directive, NgModule, forwardRef } from "@angular/core";
 import { FormsModule, NG_VALUE_ACCESSOR } from "@angular/forms";
 import { registerElement } from "nativescript-angular";
-import { TextValueAccessor } from "nativescript-angular/forms/value-accessors";
+import { TextValueAccessor } from "nativescript-angular/forms/value-accessors/text-value-accessor";
 
 registerElement("MaskedTextField", () => require("../masked-text-field").MaskedTextField);
 
@@ -28,7 +28,10 @@ export class MaskedTextValueAccessor extends TextValueAccessor {
 }
 
 @NgModule({
-    declarations: [MaskedTextValueAccessor],
+    declarations: [
+        MaskedTextValueAccessor,
+        TextValueAccessor
+    ],
     providers: [],
     imports: [
         FormsModule
