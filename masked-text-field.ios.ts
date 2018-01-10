@@ -80,9 +80,8 @@ export class MaskedTextField extends MaskedTextFieldBase {
     }
 }
 
+@ObjCClass(UITextFieldDelegate)
 class MaskedTextFieldDelegate extends NSObject implements UITextFieldDelegate {
-    public static ObjCProtocols = [UITextFieldDelegate];
-
     public static initWithOwnerAndDefaultImplementation(owner: WeakRef<MaskedTextField>, defaultImplementation: UITextFieldDelegate): MaskedTextFieldDelegate {
         const delegate = MaskedTextFieldDelegate.new() as MaskedTextFieldDelegate;
         delegate._owner = owner;
@@ -95,6 +94,10 @@ class MaskedTextFieldDelegate extends NSObject implements UITextFieldDelegate {
 
     public textFieldShouldBeginEditing(textField: UITextField): boolean {
         return this._defaultImplementation.textFieldShouldBeginEditing(textField);
+    }
+
+    public textFieldDidBeginEditing(textField: UITextField) {
+        textField.selectedTextRange = textField.textRangeFromPositionToPosition(textField.beginningOfDocument, textField.beginningOfDocument);
     }
 
     public textFieldDidEndEditing(textField: UITextField) {
