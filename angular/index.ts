@@ -22,9 +22,9 @@ const MASKED_TEXT_VALUE_ACCESSOR = {
  */
 @Directive({
     selector:
-    "MaskedTextField[ngModel], MaskedTextField[formControlName]" +
-    "maskedTextField[ngModel], maskedTextField[formControlName]" +
-    "masked-text-field[ngModel], masked-text-field[formControlName]",
+    "MaskedTextField[ngModel], MaskedTextField[formControlName], MaskedTextField[formControl]" +
+    "maskedTextField[ngModel], maskedTextField[formControlName], maskedTextField[formControl]" +
+    "masked-text-field[ngModel], masked-text-field[formControlName], masked-text-field[formControl]",
     providers: [MASKED_TEXT_VALUE_ACCESSOR],
     host: {
         "(touch)": "onTouched()",
