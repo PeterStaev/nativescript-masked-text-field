@@ -1,13 +1,13 @@
 {
   "name": "nativescript-masked-text-field",
-  "version": "2.0.2",
+  "version": "3.0.0",
   "description": "A NativeScript masked text field widget.",
   "main": "masked-text-field",
   "typings": "masked-text-field.d.ts",
   "nativescript": {
     "platforms": {
-      "android": "3.4.0",
-      "ios": "3.4.0"
+      "android": "4.0.0",
+      "ios": "4.0.0"
     },
     "plugin": {
       "nan": "true",
