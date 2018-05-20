@@ -13,13 +13,14 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ***************************************************************************** */
-import { CoercibleProperty, Property } from "ui/core/view";
+import { CSSType, CoercibleProperty, Property } from "ui/core/view";
 import { TextField } from "ui/text-field";
 
 import { MaskedTextField as MaskedTextFieldDefinition } from ".";
 
 export * from "ui/text-field";
 
+@CSSType("MaskedTextField")
 export abstract class MaskedTextFieldBase extends TextField implements MaskedTextFieldDefinition {
     public mask: string;
     public text: string;

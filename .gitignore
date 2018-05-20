@@ -58,3 +58,4 @@ demo-ng/platforms
 demo-ng/lib
 !webpack.*.js
 report
+.tmp_backup
