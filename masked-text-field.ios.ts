@@ -97,6 +97,7 @@ class MaskedTextFieldDelegate extends NSObject implements UITextFieldDelegate {
     }
 
     public textFieldDidBeginEditing(textField: UITextField) {
+        this._defaultImplementation.textFieldDidBeginEditing(textField);
         textField.selectedTextRange = textField.textRangeFromPositionToPosition(textField.beginningOfDocument, textField.beginningOfDocument);
     }
 
