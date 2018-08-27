@@ -1,6 +1,6 @@
 import { Directive, NgModule, forwardRef } from "@angular/core";
 import { FormsModule, NG_VALUE_ACCESSOR } from "@angular/forms";
-import { registerElement } from "nativescript-angular";
+import { registerElement } from "nativescript-angular/element-registry";
 import { NativeScriptFormsModule } from "nativescript-angular/forms";
 import { TextValueAccessor } from "nativescript-angular/forms/value-accessors/text-value-accessor";
 
