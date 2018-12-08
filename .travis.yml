@@ -94,7 +94,7 @@ matrix:
         provider: npm
         email: "peter@tangrasoft.com"
         api_key:
-          secure: "C4Lon6juTC2yf5ca8Nu7cqqAPazDe7S/9iT0a+7NcTCBp5Q0b+G+CFzJuAiq4HQrIWiH3rBc1zVysxDtmupGQlEMwlIBQ6WdUDQ0UtG86ONGluEMLAQsZVryMWDeeKjRPktXbVfoNWaZciTc9JvRCJPcZq+UyOUNfPK2pduwUhKJi0IhCuIZd/mwxVyX9BAP2BspU556RKaBvHhkQ/X6cEMnztF11WiAZ3x1E4sjLTk30cKp7ckXxHgnG2jKPlVNUGTdtWBkhkgqtAF0sCOZ+Kq2f2mmDj8Ru9rE1ck6C9+wixMzdDrsol3F+6mRtpayzNDRQgecjqnJffRqoxvzb7A3cvE6WsQFR/EPt7gfN4Cipzy3t+vYpkDTrrjRlK5ZNsZiFtmaaRwOzr9ieisjkf8FBlr1ZMnsyUencfyg/PggxImEc90ti6LwU3r+cYzAMCDSbfnBvn2BwYXPf4usEGPuz+4ghtPbSyZn+a+Q/7c9KEwakMwYirQ0B7eoERuLOqfqEXViY6VAHKOLaVNHbocpgw0pGGjjnTUfeEWQvaqPukPQqzPuKSDWfV6JQ+QaLxiv84TTm82+JKADajEUO9GV/yUub1ZW9HQC4jyupftFNnjd8udoVu6BmHUwzCYUCzFzODg7gz2XzhRt+OMaIwrtuM28j8Eh+xUx+eeupY0="
+          secure: "Q8m8195618Tp9YIzt6t/Yk2u0TARi4S4i2061JNkdzFg8D5Qnxj9Ea0Z6rXJeS3K248iLWBbvDww+tYKvpdySNZrCLSLIzbBlNpd9Tcg4gmaRDtG1M6WbGv9vQ3z4heSVSkCGmcIHWuBpO6cd3Tb7kYvm1RLDmL7SNbo5j8C12rLwcjORJdjh+kDhwRu4ZUguAJBJ7QVvlpIASL4KxuB4J/A3i4nsAe6RptaAw6MdwQyXDE+IyCPZh4aXshMkaOskdtDW7nzb6jbZIhhKOuBjUnF/Mhe3kFV8ohCozghnp8uIYPHC3MtrQ5mOGYbIs8SgYaItJq7llnRhQYLLCLMBJxwkFTOfMMKR/L2hmVhjeB2PVYdLUaUMjDSZBPjh0DG/s/jnpbZxwQCvpJzMhFHPWXNqA/PIeT+ZA5MoF/ofBB0TndxNFmB1Zn0krLwPkGUumaZiCogPVPktpJSZ1gKqtYercnt7oQmqsWntHH90Cl66F+3FxjEFVmZ9S5M143CmvTWaWlJJeqV6fcLY86mPPlpmtf3yCigtP4NWtbeVBD+FLInoX3bY0QmrXWB292uj7Oox1FBexICHp/EzPU8xBbo2JPV/73nW7Ppg8YKCFKVV33l+jiUnE3kMGqPqXjcY9vaoxhAjQDpbYxjiUMLln60pCbcWak8hksyrwcfNxI="
         skip_cleanup: true
         on:
           branch: release
