@@ -20,10 +20,10 @@ import { MaskedTextFieldBase, textProperty } from "./masked-text-field-common";
 export * from "./masked-text-field-common";
 
 export class MaskedTextField extends MaskedTextFieldBase {
-    private _delegate: any;
+    private _delegate: any; // NOTE: This override the one in TextField so we can add our own logic!
 
-    constructor() {
-        super(); // NOTE: This initializes this._delegate!
+    public initNativeView() {
+        super.initNativeView(); // NOTE: This initializes this._delegate!
         this._delegate = MaskedTextFieldDelegate.initWithOwnerAndDefaultImplementation(new WeakRef(this), this._delegate);
     }
 
@@ -79,7 +79,6 @@ export class MaskedTextField extends MaskedTextFieldBase {
         }
     }
 }
-
 @ObjCClass(UITextFieldDelegate)
 class MaskedTextFieldDelegate extends NSObject implements UITextFieldDelegate {
     public static initWithOwnerAndDefaultImplementation(owner: WeakRef<MaskedTextField>, defaultImplementation: UITextFieldDelegate): MaskedTextFieldDelegate {
