@@ -82,7 +82,7 @@ class MaskedTextFieldTextWatcher extends java.lang.Object implements android.tex
 
     public onTextChanged(s: string /* java.lang.CharSequence */, start: number, before: number, count: number) {
         const owner = this.owner.get();
-        if (!owner._isChangingNativeTextIn) {
+        if (!owner._isChangingNativeTextIn && s && s.toString() !== "") {
             const changedText = s.toString().substr(start, count);
             const isBackwardsIn: boolean = (count === 0);
             const newCaretPosition = owner._updateMaskedText(start, before, changedText, isBackwardsIn);
