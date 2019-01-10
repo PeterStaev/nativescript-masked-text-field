@@ -8,18 +8,10 @@ registerElement("MaskedTextField", () => require("../masked-text-field").MaskedT
 
 const MASKED_TEXT_VALUE_ACCESSOR = {
     provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => MaskedTextValueAccessor), multi: true
+    useExisting: forwardRef(() => MaskedTextValueAccessor),
+    multi: true
 };
 
-/**
- * The accessor for setting a selectedIndex and listening to changes that is used by the
- * {@link NgModel} directives.
- *
- *  ### Example
- *  ```
- *  <MaskedTextField [(ngModel)]="model.test">
- *  ```
- */
 @Directive({
     selector:
     "MaskedTextField[ngModel], MaskedTextField[formControlName], MaskedTextField[formControl]" +
@@ -27,7 +19,7 @@ const MASKED_TEXT_VALUE_ACCESSOR = {
     "masked-text-field[ngModel], masked-text-field[formControlName], masked-text-field[formControl]",
     providers: [MASKED_TEXT_VALUE_ACCESSOR],
     host: {
-        "(touch)": "onTouched()",
+        "(blur)": "onTouched()",
         "(textChange)": "onChange($event.value)"
     }
 })
