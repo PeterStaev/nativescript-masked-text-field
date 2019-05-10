@@ -66,6 +66,15 @@ export class MaskedTextField extends MaskedTextFieldBase {
         this.nativeView.setText(transformedText);
         this._isChangingNativeTextIn = false;
     }
+
+    public _setInputType(inputType: number) {
+        // This is needed so remove built in number validation of android
+        inputType = inputType
+            & ~android.text.InputType.TYPE_NUMBER_FLAG_SIGNED
+            & ~android.text.InputType.TYPE_NUMBER_FLAG_DECIMAL;
+
+        super._setInputType(inputType);
+    }
 }
 
 @Interfaces([android.text.TextWatcher])

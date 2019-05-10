@@ -20,6 +20,11 @@ import { MaskedTextField as MaskedTextFieldDefinition } from ".";
 
 export * from "ui/text-field";
 
+// Dummy interface to allow call of private function in TextField
+export interface MaskedTextFieldBase {
+    _setInputType(inputType: number): void;
+}
+
 @CSSType("MaskedTextField")
 export abstract class MaskedTextFieldBase extends TextField implements MaskedTextFieldDefinition {
     public mask: string;
