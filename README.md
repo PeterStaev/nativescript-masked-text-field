@@ -1,3 +1,4 @@
+**This repo only supports NativeScript pre-6.0. The latest version of the plugin supporting NS 6+ is availble as part of [ProPlugins](https://proplugins.org).**
 # NativeScript Masked Text Field widget 
 [![Build Status](https://travis-ci.org/PeterStaev/nativescript-masked-text-field.svg?branch=master)](https://travis-ci.org/PeterStaev/nativescript-masked-text-field)
 [![npm downloads](https://img.shields.io/npm/dm/nativescript-masked-text-field.svg)](https://www.npmjs.com/package/nativescript-masked-text-field)
