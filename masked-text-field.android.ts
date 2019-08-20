@@ -79,7 +79,6 @@ export class MaskedTextField extends MaskedTextFieldBase {
 
 @Interfaces([android.text.TextWatcher])
 class MaskedTextFieldTextWatcher extends java.lang.Object implements android.text.TextWatcher {
-    private _debounceTimeout: number = null;
 
     constructor(private owner: WeakRef<MaskedTextField>) {
         super();
@@ -94,20 +93,11 @@ class MaskedTextFieldTextWatcher extends java.lang.Object implements android.tex
     public onTextChanged(s: string /* java.lang.CharSequence */, start: number, before: number, count: number) {
         const owner = this.owner.get();
         if (!owner._isChangingNativeTextIn && s && s.toString() !== "") {
-            // HACK: We need to be sure that this is executed AFTER the value is changed so a correct chain of
-            // textChange events is triggered. Otherwise on NG the value gets messed up and not correctly formatted. 
-            if (this._debounceTimeout) {
-                clearTimeout(this._debounceTimeout);
-            }
-            this._debounceTimeout = setTimeout(() => {
-                this._debounceTimeout = null;
-
-                const changedText = s.toString().substr(start, count);
-                const isBackwardsIn: boolean = (count === 0);
-                const newCaretPosition = owner._updateMaskedText(start, before, changedText, isBackwardsIn);
-                const editText: android.widget.EditText = owner.nativeView as android.widget.EditText;
-                editText.setSelection(newCaretPosition);
-            }, 10);
+            const changedText = s.toString().substr(start, count);
+            const isBackwardsIn: boolean = (count === 0);
+            const newCaretPosition = owner._updateMaskedText(start, before, changedText, isBackwardsIn);
+            const editText: android.widget.EditText = owner.nativeView as android.widget.EditText;
+            editText.setSelection(newCaretPosition);
         }    
     }
 
